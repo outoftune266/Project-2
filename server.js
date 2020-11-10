@@ -1,6 +1,7 @@
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
+const dotenv = require("dotenv").config();
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -24,3 +25,5 @@ db.sequelize.sync().then(function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
+
+
