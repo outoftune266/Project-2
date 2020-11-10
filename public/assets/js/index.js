@@ -1,3 +1,9 @@
+// Global Variables
+let bounds;
+
+let features;
+
+//Map Instantiation
 mapboxgl.accessToken = 'pk.eyJ1Ijoib3V0b2Z0dW5lMjY2IiwiYSI6ImNraGF4NnhwZDBrZjMzMms0c2xwejYydmEifQ.CsvsPCXbKiZI9P_psvhAgw';
 var map = new mapboxgl.Map({
     container: 'map', // container id
@@ -7,26 +13,36 @@ var map = new mapboxgl.Map({
 
 });
 
+function getFeatures() {
+    let minLat = bounds._sw.lat;
+    let maxLat = bounds._ne.lat;
+    let minLng = bounds._sw.lng;
+    let maxLng = bounds._ne.lng;
+    //console.log(minLat)
+}
+
 map.on('load', function () {
+    features = [
+        {
+            'type': 'Feature',
+            'properties': {
+                'description':
+                    '<strong>Zaks House</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                'icon': 'theatre'
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [-86.760240, 36.189660]
+            }
+        }
+
+    ];
+
     map.addSource('places', {
         'type': 'geojson',
         'data': {
             'type': 'FeatureCollection',
-            'features': [
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'description':
-                            '<strong>Zaks House</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
-                        'icon': 'theatre'
-                    },
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [-86.760240, 36.189660]
-                    }
-                }
-
-            ]
+            'features': features
         }
     });
 
@@ -68,4 +84,19 @@ map.on('load', function () {
     map.on('mouseleave', 'places', function () {
         map.getCanvas().style.cursor = '';
     });
+
+    //Gets viewport coordinates when user zooms
+    //Should be able to get viewport coordinatres when user hits refresh button
+    map.on('zoomend', () => {
+        bounds = map.getBounds();
+        // console.log(bounds);
+        getFeatures();
+     });
+    
 });
+
+//Click Listener
+$("#refesh").on("click", () => {
+    bounds = map.getBounds();
+    console.log(bounds);
+})
