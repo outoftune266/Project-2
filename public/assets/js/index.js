@@ -1,6 +1,5 @@
 // Global Variables
 let bounds;
-
 let features;
 
 //Map Instantiation
@@ -13,15 +12,36 @@ var map = new mapboxgl.Map({
 
 });
 
-function getFeatures() {
-    let minLat = bounds._sw.lat;
-    let maxLat = bounds._ne.lat;
-    let minLng = bounds._sw.lng;
-    let maxLng = bounds._ne.lng;
-    //console.log(minLat)
-}
+function getRestaurants() {
+    // let minLat = bounds._sw.lat;
+    // let maxLat = bounds._ne.lat;
+    // let minLng = bounds._sw.lng;
+    // let maxLng = bounds._ne.lng;
+    let viewport = {
+        minLat: bounds._sw.lat,
+        maxLat: bounds._ne.lat,
+        minLng: bounds._sw.lng,
+        maxLng: bounds._ne.lng
+    }
+    $.get("/api/food", viewport).then(function (data) {
+        console.log(data)
+    });
+};
+
+function getEntertainment() {
+    let viewport = {
+        minLat: bounds._sw.lat,
+        maxLat: bounds._ne.lat,
+        minLng: bounds._sw.lng,
+        maxLng: bounds._ne.lng
+    }
+    $.get("/api/entertainment", viewport).then(function (data) {
+        console.log(data)
+    });
+};
 
 map.on('load', function () {
+    //Format for features object that will need to be fed to map.addSource
     features = [
         {
             'type': 'Feature',
@@ -91,8 +111,8 @@ map.on('load', function () {
         bounds = map.getBounds();
         // console.log(bounds);
         getFeatures();
-     });
-    
+    });
+
 });
 
 //Click Listener
