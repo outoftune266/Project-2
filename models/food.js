@@ -26,11 +26,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         latitude: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(17,14),
             allowNull: false
         },
         longitude: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(17,14),
             allowNull: false
         },
         familyFriendly: {
