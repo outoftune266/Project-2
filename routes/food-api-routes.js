@@ -7,23 +7,24 @@ module.exports = function (app) {
 
     
     app.get("/api/food", function (req, res) {
-        //console.log(req);
+        let coordinates = req.query;
+        //console.log(coordinates);
         let query = {
-            lat: {
-                [Op.between]: [minLat, maxLat]
+            latitude: {
+                [Op.between]: [coordinates.minLat, coordinates.maxLat]
             },
-            lng: {
-                [Op.between]: [minLng, maxLng]
+            longitude: {
+                [Op.between]: [coordinates.minLng, coordinates.maxLng]
             }
         };
-        db.Food.findAll({
+        db.Restaurant.findAll({
             limit: 20,
             where: query,
             //include: [db.Author]
         }).then(function (dbPost) {
+            console.log(dbPost);
             res.json(dbPost);
         });
-
     });
 
 
