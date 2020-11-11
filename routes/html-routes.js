@@ -7,8 +7,8 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/form.html"));
+  app.get("/form", function(req, res) {
+    res.render("form")
   });
 
   app.get("/blog", function(req, res) {
