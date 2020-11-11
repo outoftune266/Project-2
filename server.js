@@ -1,6 +1,6 @@
 // Requiring necessary npm packages
 const express = require("express");
-const session = require("express-session");
+//const session = require("express-session");
 const dotenv = require("dotenv").config();
 
 // Setting up port and requiring models for syncing
