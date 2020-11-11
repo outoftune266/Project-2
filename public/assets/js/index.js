@@ -1,6 +1,6 @@
 // Global Variables
 let bounds;
-let features;
+let features = [];
 const newMap = document.getElementById("map");
 const slider = document.querySelector(".slider");
 const logo = document.querySelector(".logo");
@@ -27,22 +27,46 @@ function getRestaurants() {
         maxLng: bounds._ne.lng
     }
     $.get("/api/food", viewport).then(function (data) {
-        console.log(data[0].restaurantName)
-        features = [
-            {
+        //console.log(data[0])
+        for (i = 0; i < data.length; i++) {
+            let feature = {
                 'type': 'Feature',
                 'properties': {
                     'description':
-                        `<strong>${data[0].restaurantName}</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>`,
+                        `<strong>${data[i].restaurantName}</strong>
+                        <p>Cuisine: ${data[i].cuisine}<br>
+                        Location: ${data[i].location}<br>
+                        Cost: ${data[i].cost}<br>
+                        Rating: ${data[i].rating}<br>
+                        Family Friendly: ${data[i].familyFriendly}<br>
+                        You've Gotta Try: ${data[i].mustTry}<br>
+                        <a href="${data[i].website}" target="_blank" title="Opens in a new window">Website</a><br>
+                        </p>`,
                     'icon': 'theatre'
                 },
                 'geometry': {
                     'type': 'Point',
                     'coordinates': [`${data[0].longitude}`, `${data[0].latitude}`]
                 }
-            }
+            };
 
-        ];
+            features.push(feature);
+        };
+        // features = [
+        //     {
+        //         'type': 'Feature',
+        //         'properties': {
+        //             'description':
+        //                 `<strong>${data[0].restaurantName}</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>`,
+        //             'icon': 'theatre'
+        //         },
+        //         'geometry': {
+        //             'type': 'Point',
+        //             'coordinates': [`${data[0].longitude}`, `${data[0].latitude}`]
+        //         }
+        //     }
+
+        // ];
 
         map.addSource('places', {
             'type': 'geojson',

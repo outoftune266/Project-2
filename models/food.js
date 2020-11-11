@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         mustTry: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false
         },
     });
