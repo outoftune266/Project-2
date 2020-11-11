@@ -1,17 +1,25 @@
-
-
 // Requiring our models
 const db = require("../models");
+const { Op } = require("sequelize")
 
 module.exports = function (app) {
 
 
-    i
+    
     app.get("/api/food", function (req, res) {
-        let query = {};
+        //console.log(req);
+        let query = {
+            lat: {
+                [Op.between]: [minLat, maxLat]
+            },
+            lng: {
+                [Op.between]: [minLng, maxLng]
+            }
+        };
         db.Food.findAll({
+            limit: 20,
             where: query,
-            include: [db.Author]
+            //include: [db.Author]
         }).then(function (dbPost) {
             res.json(dbPost);
         });
