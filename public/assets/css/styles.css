@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -36,7 +36,7 @@
     z-index: -1;
 
 } */
-
+/* 
 form {
     position: flex;
 }
@@ -123,11 +123,144 @@ nav {
   
   button {
     background-color: #4CAF50; /* Green */
-    border: none;
+    /* border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  }
+  }  */
+
+
+  /* added 11-10-20 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#map {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    min-height: 60vh;
+    width: 50%;
+    padding-top: 20em;
+    padding: 10rem 5rem;
+}
+
+nav {
+    display: flex;
+    justify-items: center;
+    justify-content:space-between; 
+    min-height: 10vh;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    padding-left: 10rem;
+    font-size: 1.2rem;
+}
+
+#logo {
+    font-weight: lighter;
+    font-size: 2rem;
+}
+
+.big-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    color: rgb(60, 61, 61);
+}
+
+.intro {
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.slider {
+    background: rgb(45, 62, 73);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    
+}
+
+.intro-text {
+    color: rgb(227,242, 255);
+    font-family: monospace;
+    font-size: 3rem;
+}
+
+.hide {
+    background: black;
+    overflow: hidden;
+}
+
+.hide span {
+    transform: translateY(100%);
+    display: inline-block;
+}
+
+h2 {
+    font-size: 6rem;
+    padding-bottom: 20%;
+}
+
+
+footer {
+    position: sticky;
+    text-align: center;
+    padding-top: 50rem;
+}
+
+.toggle {
+    position: absolute;
+    margin-left: 30%;
+    top: 85%;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #ff8181;
+    color: #FFF;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    overflow: hidden;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    border-bottom: solid 3px #bd6565;
+    transition: .4s;
+}
+
+
+.btn:active{
+    -ms-transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    border-bottom: none;
+}
