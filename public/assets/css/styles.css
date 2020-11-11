@@ -15,17 +15,17 @@
     z-index: 1;
 } */
 
-#map {
-  position: absolute;
+/* #map {
+  position: absolute; */
   /* display: flex; */
   /* top: 0;
   bottom: 0; */
-  height: 60vh;
+  /* height: 60vh;
   width: 110vh;
   justify-content: center;
   align-items: center;
   z-index: 1;
-}
+} */
 
 
 /* .slider{
