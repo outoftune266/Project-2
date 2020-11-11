@@ -110,7 +110,7 @@ map.on('load', function () {
     map.on('zoomend', () => {
         bounds = map.getBounds();
         // console.log(bounds);
-        getFeatures();
+        getRestaurants();
     });
 
 });
