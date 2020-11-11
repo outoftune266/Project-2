@@ -19,7 +19,6 @@ var map = new mapboxgl.Map({
 
 });
 
-<<<<<<< HEAD
 function getRestaurants() {
     // let minLat = bounds._sw.lat;
     // let maxLat = bounds._ne.lat;
@@ -124,7 +123,7 @@ map.on('load', function () {
 });
 
 //Click Listener
-$("#refesh").on("click", () => {
+$(".btn").on("click", () => {
     bounds = map.getBounds();
     console.log(bounds);
 })
