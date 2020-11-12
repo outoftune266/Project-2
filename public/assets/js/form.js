@@ -37,30 +37,8 @@ $(".submit").on("click", function (e) {
 
 
 function newLocation(name, cuisine, location, cost, url, rating, lat, lng, family, mustTry) {
-    console.log(name);
-    let data = {
-        restaurantName: name,
-        cuisine: cuisine,
-        location: location,
-        cost: cost,
-        website: url,
-        rating: rating,
-        latitude: lat,
-        longitude: lng,
-        familyFriendly: family,
-        mustTry: mustTry
-    };
-    $.ajax({
-        url: "/api/food",
-        method: "POST",
-        data: {
-            id: 1
-        },
-        dataType: "json"
-    }).then(() => {
-            alert("hi");
-        })
-    // $.post("/api/food", {
+    //console.log(name);
+    // let data = {
     //     restaurantName: name,
     //     cuisine: cuisine,
     //     location: location,
@@ -71,9 +49,34 @@ function newLocation(name, cuisine, location, cost, url, rating, lat, lng, famil
     //     longitude: lng,
     //     familyFriendly: family,
     //     mustTry: mustTry
-    // }, () => {
-    //     alert("hi");
-    // });
+    // };
+    // $.ajax({
+    //     url: "/api/food",
+    //     method: "POST",
+    //     data: {
+    //         restaurantName: name
+    //     },
+    //     dataType: "json"
+    // }).then(() => {
+    //         alert("hi");
+    //     })
+    $.post("/api/food",
+        {
+            restaurantName: name,
+            cuisine: cuisine,
+            location: location,
+            cost: cost,
+            website: url,
+            rating: rating,
+            latitude: lat,
+            longitude: lng,
+            familyFriendly: family,
+            mustTry: mustTry
+        },
+        function (data, status) {
+            console.log(data);
+            console.log(status);
+        });
 };
 // ).done(function (data) {
 //         alert("Thanks for entering a restaurant!!!!!!!")
