@@ -141,8 +141,9 @@ setTimeout(function () {
     displayFeatures();
 }, 4000);
 
-//Click Listener
+//Click Listeners
 $("#refresh").on("click", () => {
+    features = [];
     bounds = map.getBounds();
     getRestaurants();
     removeFeatures();
