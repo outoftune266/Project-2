@@ -27,7 +27,7 @@ function getRestaurants() {
         maxLng: bounds._ne.lng
     }
     $.get("/api/food", viewport).then(function (data) {
-        //console.log(data)
+        console.log(data)
         for (i = 0; i < data.length; i++) {
             let feature = {
                 'type': 'Feature',
@@ -46,28 +46,14 @@ function getRestaurants() {
                 },
                 'geometry': {
                     'type': 'Point',
-                    'coordinates': [`${data[0].longitude}`, `${data[0].latitude}`]
+                    'coordinates': [`${data[i].longitude}`, `${data[i].latitude}`]
                 }
             };
             features.push(feature);
         };
+        console.log(features);
 
-        // features = [
-        //     {
-        //         'type': 'Feature',
-        //         'properties': {
-        //             'description':
-        //                 `<strong>${data[0].restaurantName}</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>`,
-        //             'icon': 'theatre'
-        //         },
-        //         'geometry': {
-        //             'type': 'Point',
-        //             'coordinates': [`${data[0].longitude}`, `${data[0].latitude}`]
-        //         }
-        //     }
-
-        // ];        
-    })
+    });
 };
 
 function displayFeatures() {
@@ -108,7 +94,12 @@ function displayFeatures() {
             .setHTML(description)
             .addTo(map);
     });
-}
+};
+
+function removeFeatures() {
+    map.removeLayer("places");
+    map.removeSource("places");
+};
 
 function getEntertainment() {
     let viewport = {
@@ -122,12 +113,6 @@ function getEntertainment() {
     });
 };
 
-// async function restaurantController() {
-//     const features = await getRestaurants();
-//     displayFeatures(features);
-
-// }
-
 function getCoordinates() {
     bounds = map.getBounds();
 }
@@ -136,45 +121,6 @@ map.on('load', function () {
 
     getCoordinates();
     getRestaurants();
-
-
-    // map.addSource('places', {
-    //     'type': 'geojson',
-    //     'data': {
-    //         'type': 'FeatureCollection',
-    //         'features': features
-    //     }
-    // });
-
-    // map.addLayer({
-    //     'id': 'places',
-    //     'type': 'symbol',
-    //     'source': 'places',
-    //     'layout': {
-    //         'icon-image': '{icon}-15',
-    //         'icon-allow-overlap': true
-    //     }
-    // });
-
-    // When a click event occurs on a feature in the places layer, open a popup at the
-    // location of the feature, with description HTML from its properties.
-    // map.on('click', 'places', function (e) {
-    //     var coordinates = e.features[0].geometry.coordinates.slice();
-    //     var description = e.features[0].properties.description;
-
-    //     // Ensure that if the map is zoomed out such that multiple
-    //     // copies of the feature are visible, the popup appears
-    //     // over the copy being pointed to.
-    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    //     }
-
-    //     new mapboxgl.Popup()
-    //         .setLngLat(coordinates)
-    //         .setHTML(description)
-    //         .addTo(map);
-    // });
-
 
     // Change the cursor to a pointer when the mouse is over the places layer.
     map.on('mouseenter', 'places', function () {
@@ -186,25 +132,23 @@ map.on('load', function () {
         map.getCanvas().style.cursor = '';
     });
 
-    //Gets viewport coordinates when user zooms
-    //Should be able to get viewport coordinatres when user hits refresh button
-    // map.on('zoomend', () => {
-    //     bounds = map.getBounds();
-    //     console.log(bounds);
-    //     getRestaurants();
-    // });
-
 });
 
 setTimeout(function () {
-    $("#map").attr("style", "z-index: 99")
+    $(".intro").remove();
+    $(".slider").remove();
+    $("#map").attr("style", "z-index: 1");
+    displayFeatures();
 }, 4000)
 
 //Click Listener
-$(".btn").on("click", () => {
+$("#refresh").on("click", () => {
     bounds = map.getBounds();
-    console.log(bounds);
-})
+    getRestaurants();
+    removeFeatures();
+    displayFeatures();
+});
+
 
 tl.to(".text", { y: "0%", duration: 1, stagger: 0.55 });
 tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });

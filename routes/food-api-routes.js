@@ -3,9 +3,6 @@ const db = require("../models");
 const { Op } = require("sequelize")
 
 module.exports = function (app) {
-
-
-    
     app.get("/api/food", function (req, res) {
         let coordinates = req.query;
         //console.log(coordinates);
@@ -20,21 +17,16 @@ module.exports = function (app) {
         db.Restaurant.findAll({
             limit: 20,
             where: query,
-            //include: [db.Author]
         }).then(function (dbPost) {
             console.log(dbPost);
             res.json(dbPost);
         });
     });
 
-
-
-  
     app.post("/api/food", function (req, res) {
         db.Food.create(req.body).then(function (dbPost) {
             res.json(dbPost);
         });
-
     });
 
 
