@@ -42,7 +42,7 @@ function getRestaurants() {
                         You've Gotta Try: ${data[i].mustTry}<br>
                         <a href="${data[i].website}" target="_blank" title="Opens in a new window">Website</a><br>
                         </p>`,
-                    'icon': 'theatre'
+                    'icon': 'restaurant'
                 },
                 'geometry': {
                     'type': 'Point',
