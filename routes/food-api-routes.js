@@ -24,7 +24,8 @@ module.exports = function (app) {
     });
 
     app.post("/api/food", function (req, res) {
-        db.Food.create(req.body).then(function (dbPost) {
+        console.log(req.body);
+        db.Restaurant.create(req.body).then(function (dbPost) {
             res.json(dbPost);
         });
     });
