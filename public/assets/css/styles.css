@@ -140,7 +140,20 @@ nav {
     box-sizing: border-box;
 }
 
+/* Map works with this css */
 #map {
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  min-height: 60vh;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Map does not work with this css */
+/* #map {
     position: absolute;
     top: 25%;
     left: 25%;
@@ -148,7 +161,7 @@ nav {
     width: 50%;
     padding-top: 20em;
     padding: 10rem 5rem;
-}
+} */
 
 nav {
     display: flex;
