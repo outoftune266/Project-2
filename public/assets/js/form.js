@@ -14,7 +14,7 @@ function getLocation() {
     let cost = $("#cost").val();
     let url = $("#url").val();
     let rating = $("#rating").val();
-    let family = $("#family").val();
+    let family = document.getElementById("family").checked;
     let mustTry = $("#try").val();
     console.log(family);
     let queryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + address + "&key=d0ec5acfd95d41b2b3da1850a8ae6d1a";
@@ -28,6 +28,11 @@ function getLocation() {
         newLocation(name, cuisine, address, cost, url, rating, lat, lng, family, mustTry)
     });
 };
+
+function check() {
+    let check = document.getElementById("family").checked;
+    console.log(check);
+}
 
 
 $(".submit").on("click", function (e) {
