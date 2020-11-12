@@ -3,9 +3,6 @@ const db = require("../models");
 const { Op } = require("sequelize")
 
 module.exports = function (app) {
-
-
-    
     app.get("/api/food", function (req, res) {
         let coordinates = req.query;
         //console.log(coordinates);
@@ -26,14 +23,10 @@ module.exports = function (app) {
         });
     });
 
-
-
-  
     app.post("/api/food", function (req, res) {
         db.Food.create(req.body).then(function (dbPost) {
             res.json(dbPost);
         });
-
     });
 
 

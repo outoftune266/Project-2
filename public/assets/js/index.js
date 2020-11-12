@@ -52,7 +52,7 @@ function getRestaurants() {
             features.push(feature);
         };
         console.log(features);
-         
+
     });
 };
 
@@ -96,6 +96,11 @@ function displayFeatures() {
     });
 };
 
+function removeFeatures() {
+    map.removeLayer("places");
+    map.removeSource("places");
+};
+
 function getEntertainment() {
     let viewport = {
         minLat: bounds._sw.lat,
@@ -137,10 +142,13 @@ setTimeout(function () {
 }, 4000)
 
 //Click Listener
-$(".btn").on("click", () => {
+$("#refresh").on("click", () => {
     bounds = map.getBounds();
-    console.log(bounds);
-})
+    getRestaurants();
+    removeFeatures();
+    displayFeatures();
+});
+
 
 tl.to(".text", { y: "0%", duration: 1, stagger: 0.55 });
 tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
