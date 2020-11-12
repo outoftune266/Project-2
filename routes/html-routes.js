@@ -8,15 +8,15 @@ module.exports = function(app) {
   });
 
   app.get("/form", function(req, res) {
-    res.render("form")
+    res.render("formpage")
   });
 
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
+  // app.get("/blog", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/blog.html"));
+  // });
 
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
+  // app.get("/authors", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
+  // });
 
 };

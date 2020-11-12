@@ -26,7 +26,6 @@ function getRestaurants() {
         minLng: bounds._sw.lng,
         maxLng: bounds._ne.lng
     }
-    //let features = [];
     $.get("/api/food", viewport).then(function (data) {
         //console.log(data)
         for (i = 0; i < data.length; i++) {
@@ -71,8 +70,8 @@ function getRestaurants() {
     })
 };
 
-function displayFeatures(features) {
-    console.log(features);
+function displayFeatures() {
+    //console.log(features);
     map.addSource('places', {
         'type': 'geojson',
         'data': {
@@ -196,6 +195,10 @@ map.on('load', function () {
     // });
 
 });
+
+    setTimeout(function(){
+        $("#map").attr("style", "z-index: 99")
+    },4000)
 
 //Click Listener
 $(".btn").on("click", () => {
