@@ -122,6 +122,10 @@ map.on('load', function () {
 
 });
 
+    setTimeout(function(){
+        $("#map").attr("style", "z-index: 99")
+    },4000)
+
 //Click Listener
 $(".btn").on("click", () => {
     bounds = map.getBounds();
