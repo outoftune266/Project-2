@@ -20,7 +20,6 @@ module.exports = function (app) {
         db.Restaurant.findAll({
             limit: 20,
             where: query,
-            //include: [db.Author]
         }).then(function (dbPost) {
             console.log(dbPost);
             res.json(dbPost);
