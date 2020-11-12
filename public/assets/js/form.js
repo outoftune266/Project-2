@@ -16,6 +16,7 @@ function getLocation() {
     let rating = $("#rating").val();
     let family = $("#family").val();
     let mustTry = $("#try").val();
+    console.log(family);
     let queryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=d0ec5acfd95d41b2b3da1850a8ae6d1a";
     $.ajax({
         url: queryURL,
@@ -36,7 +37,8 @@ $(".submit").on("click", function (e) {
 
 
 function newLocation(name, cuisine, location, cost, url, rating, lat, lng, family, mustTry) {
-    $.post("/api/food", {
+    console.log(name);
+    let data = {
         restaurantName: name,
         cuisine: cuisine,
         location: location,
@@ -47,12 +49,35 @@ function newLocation(name, cuisine, location, cost, url, rating, lat, lng, famil
         longitude: lng,
         familyFriendly: family,
         mustTry: mustTry
-
-    })
-        .then(function (data) {
-            alert("Thanks for entering a restaurant!!!!!!!")
-            console.log(data);
-            // If there's an error, handle it by throwing up a bootstrap alert
+    };
+    $.ajax({
+        url: "/api/food",
+        method: "POST",
+        data: {
+            id: 1
+        },
+        dataType: "json"
+    }).then(() => {
+            alert("hi");
         })
-        .catch(handleLoginErr);
-}
+    // $.post("/api/food", {
+    //     restaurantName: name,
+    //     cuisine: cuisine,
+    //     location: location,
+    //     cost: cost,
+    //     website: url,
+    //     rating: rating,
+    //     latitude: lat,
+    //     longitude: lng,
+    //     familyFriendly: family,
+    //     mustTry: mustTry
+    // }, () => {
+    //     alert("hi");
+    // });
+};
+// ).done(function (data) {
+//         alert("Thanks for entering a restaurant!!!!!!!")
+//         console.log(data);
+//         // If there's an error, handle it by throwing up a bootstrap alert
+//     }).catch(handleLoginErr);
+// }
