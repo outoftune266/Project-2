@@ -139,7 +139,7 @@ setTimeout(function () {
     $(".slider").remove();
     $("#map").attr("style", "z-index: 1");
     displayFeatures();
-}, 4000)
+}, 4000);
 
 //Click Listener
 $("#refresh").on("click", () => {
