@@ -51,8 +51,8 @@ function getRestaurants() {
             };
             features.push(feature);
         };
-        console.log(features);
-
+        //console.log(features);
+        displayFeatures();
     });
 };
 
@@ -138,16 +138,16 @@ setTimeout(function () {
     $(".intro").remove();
     $(".slider").remove();
     $("#map").attr("style", "z-index: 1");
-    displayFeatures();
 }, 4000);
 
 //Click Listeners
 $("#refresh").on("click", () => {
     features = [];
-    bounds = map.getBounds();
-    getRestaurants();
+    getCoordinates();
     removeFeatures();
-    displayFeatures();
+    getRestaurants();
+    
+   // displayFeatures();
 });
 
 $("#addLocation").on("click", () => {
