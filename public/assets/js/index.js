@@ -40,7 +40,8 @@ function getRestaurants() {
                         Rating: ${data[i].rating}<br>
                         Family Friendly: ${data[i].familyFriendly}<br>
                         You've Gotta Try: ${data[i].mustTry}<br>
-                        <a href="${data[i].website}" target="_blank" title="Opens in a new window">Website</a><br>
+                        Website: ${data[i].website}
+                        <a href="${data[i].website}" target="_blank" title="Opens in a new window">Website</a>
                         </p>`,
                     'icon': 'restaurant'
                 },
@@ -51,8 +52,8 @@ function getRestaurants() {
             };
             features.push(feature);
         };
-        console.log(features);
-
+        //console.log(features);
+        displayFeatures();
     });
 };
 
@@ -101,17 +102,18 @@ function removeFeatures() {
     map.removeSource("places");
 };
 
-function getEntertainment() {
-    let viewport = {
-        minLat: bounds._sw.lat,
-        maxLat: bounds._ne.lat,
-        minLng: bounds._sw.lng,
-        maxLng: bounds._ne.lng
-    }
-    $.get("/api/entertainment", viewport).then(function (data) {
-        console.log(data)
-    });
-};
+// Entertainment feature for future implementation
+// function getEntertainment() {
+//     let viewport = {
+//         minLat: bounds._sw.lat,
+//         maxLat: bounds._ne.lat,
+//         minLng: bounds._sw.lng,
+//         maxLng: bounds._ne.lng
+//     }
+//     $.get("/api/entertainment", viewport).then(function (data) {
+//         console.log(data)
+//     });
+// };
 
 function getCoordinates() {
     bounds = map.getBounds();
@@ -138,16 +140,16 @@ setTimeout(function () {
     $(".intro").remove();
     $(".slider").remove();
     $("#map").attr("style", "z-index: 1");
-    displayFeatures();
 }, 4000);
 
 //Click Listeners
 $("#refresh").on("click", () => {
     features = [];
-    bounds = map.getBounds();
-    getRestaurants();
+    getCoordinates();
     removeFeatures();
-    displayFeatures();
+    getRestaurants();
+    
+   // displayFeatures();
 });
 
 $("#addLocation").on("click", () => {
