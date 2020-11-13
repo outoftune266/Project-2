@@ -38,6 +38,8 @@ function check() {
 $(".submit").on("click", function (e) {
     e.preventDefault();
     getLocation();
+    $(".form-input").find("input").val("");
+
 });
 
 
