@@ -75,6 +75,11 @@ function newLocation(name, cuisine, address, cost, url, rating, lat, lng, family
         alert("hi");
     })
 }
+
+
+$(".home").on("click", () => {
+    window.location.replace("/");
+});
 // ).done(function (data) {
 //         alert("Thanks for entering a restaurant!!!!!!!")
 //         console.log(data);
