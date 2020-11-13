@@ -72,7 +72,7 @@ function newLocation(name, cuisine, address, cost, url, rating, lat, lng, family
         },
         dataType: "json"
     }).then(() => {
-        alert("hi");
+        alert("Your entry has been recorded! Enter another location or click GO BACK HOME to return to the map");
     })
 }
 
