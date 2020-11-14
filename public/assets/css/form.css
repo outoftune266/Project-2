@@ -92,6 +92,25 @@ input{
     outline: none;
 }
 
+select{
+    padding:16px;
+    margin: 10px;
+    width: 70%;
+    background-color: rgba(136,133,133,0.5 );
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+legend {
+    padding:16px;
+    margin: 10px;
+    width: 70%;
+    background-color: rgba(136,133,133,0.5 );
+    color: #fff;
+    border: none;
+    outline: none;
+}
 
 input::placeholder{
     color: #fff;
