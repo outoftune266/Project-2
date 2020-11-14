@@ -25,9 +25,15 @@ body{
     text-underline-position: under;
     color: rgb(238,235,235);
     letter-spacing: 2px;
+    height: 1px;
+    margin-bottom: -10px;
+    padding-bottom: -10px;
+    margin-top: -10px;
 }
 
-#contacts .container p{
+
+
+#contacts .container h4{
     text-align: center;
     width: 70%;
     margin-left: auto;
@@ -37,9 +43,15 @@ body{
     letter-spacing: 3px;
 }
 
+.circle{
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
 .food-location i.fa{
     font-size: 22px;
-    padding: 3%;
+    padding: 10%;
     background-color: none;
     margin: 2%;
     cursor: pointer;
@@ -57,8 +69,10 @@ body{
 
 .form{
     display: grid;
-    grid-template-columns: auto auto;
-    padding-bottom: 20px;
+    grid-template-columns: 50vmax;
+    padding-bottom: 80px;
+    justify-content: space-evenly;
+    padding-left: 20%;
 }
 .food-info{
     font-size: 16px;
@@ -78,6 +92,25 @@ input{
     outline: none;
 }
 
+select{
+    padding:16px;
+    margin: 10px;
+    width: 70%;
+    background-color: rgba(136,133,133,0.5 );
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+legend {
+    padding:16px;
+    margin: 10px;
+    width: 70%;
+    background-color: rgba(136,133,133,0.5 );
+    color: #fff;
+    border: none;
+    outline: none;
+}
 
 input::placeholder{
     color: #fff;
@@ -113,6 +146,10 @@ textarea::placeholder{
     border: 2px solid rgb(190,190,190);
     color: rgb(190,190,190);
 
+}
+
+button{
+    padding-left: 20%;
 }
 
 .submit:hover{
