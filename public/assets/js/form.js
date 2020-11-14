@@ -16,10 +16,13 @@ function getLocation() {
     let rating = $("#rating").val();
     let family = document.getElementById("family").checked;
     let mustTry = $("#try").val();
-    //console.log(family);
-    if (url === "") {
-        url = "n/a"
+    console.log(url);
+    if (url) {
+        url = url;
+    } else {
+        url = "n/a";
     }
+    console.log(url);
     let queryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + address + "&key=d0ec5acfd95d41b2b3da1850a8ae6d1a";
     $.ajax({
         url: queryURL,

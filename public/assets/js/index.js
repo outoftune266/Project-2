@@ -29,11 +29,34 @@ function getRestaurants() {
     $.get("/api/food", viewport).then(function (data) {
         console.log(data)
         for (i = 0; i < data.length; i++) {
-            let feature = {
-                'type': 'Feature',
-                'properties': {
-                    'description':
-                        `<strong>${data[i].restaurantName}</strong>
+            let feature;
+            if (`${data[i].website}` === "n/a") {
+                feature = {
+                    'type': 'Feature',
+                    'properties': {
+                        'description':
+                            `<strong>${data[i].restaurantName}</strong>
+                        <p>Cuisine: ${data[i].cuisine}<br>
+                        Location: ${data[i].location}<br>
+                        Cost: ${data[i].cost}<br>
+                        Rating: ${data[i].rating}<br>
+                        Family Friendly: ${data[i].familyFriendly}<br>
+                        You've Gotta Try: ${data[i].mustTry}<br>
+                        Website: ${data[i].website}
+                        </p>`,
+                        'icon': 'restaurant'
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [`${data[i].longitude}`, `${data[i].latitude}`]
+                    }
+                };
+            } else {
+                feature = {
+                    'type': 'Feature',
+                    'properties': {
+                        'description':
+                            `<strong>${data[i].restaurantName}</strong>
                         <p>Cuisine: ${data[i].cuisine}<br>
                         Location: ${data[i].location}<br>
                         Cost: ${data[i].cost}<br>
@@ -43,12 +66,13 @@ function getRestaurants() {
                         Website: ${data[i].website}
                         <a href="https://${data[i].website}" target="_blank" title="Opens in a new window">Website</a>
                         </p>`,
-                    'icon': 'restaurant'
-                },
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [`${data[i].longitude}`, `${data[i].latitude}`]
-                }
+                        'icon': 'restaurant'
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [`${data[i].longitude}`, `${data[i].latitude}`]
+                    }
+                };
             };
             features.push(feature);
         };
@@ -148,8 +172,8 @@ $("#refresh").on("click", () => {
     getCoordinates();
     removeFeatures();
     getRestaurants();
-    
-   // displayFeatures();
+
+    // displayFeatures();
 });
 
 $("#addLocation").on("click", () => {
