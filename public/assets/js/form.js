@@ -16,7 +16,10 @@ function getLocation() {
     let rating = $("#rating").val();
     let family = document.getElementById("family").checked;
     let mustTry = $("#try").val();
-    console.log(family);
+    //console.log(family);
+    if (url === "") {
+        url = "n/a"
+    }
     let queryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + address + "&key=d0ec5acfd95d41b2b3da1850a8ae6d1a";
     $.ajax({
         url: queryURL,
@@ -39,6 +42,8 @@ $(".submit").on("click", function (e) {
     e.preventDefault();
     getLocation();
     $(".form-input").find("input").val("");
+    $("#family").prop("checked", false);
+
 });
 
 

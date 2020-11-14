@@ -41,7 +41,7 @@ function getRestaurants() {
                         Family Friendly: ${data[i].familyFriendly}<br>
                         You've Gotta Try: ${data[i].mustTry}<br>
                         Website: ${data[i].website}
-                        <a href="${data[i].website}" target="_blank" title="Opens in a new window">Website</a>
+                        <a href="https://${data[i].website}" target="_blank" title="Opens in a new window">Website</a>
                         </p>`,
                     'icon': 'restaurant'
                 },
@@ -155,6 +155,8 @@ $("#refresh").on("click", () => {
 $("#addLocation").on("click", () => {
     window.location.replace("/form");
 });
+
+
 
 
 tl.to(".text", { y: "0%", duration: 1, stagger: 0.55 });
