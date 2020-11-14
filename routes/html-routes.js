@@ -11,6 +11,8 @@ module.exports = function(app) {
     res.render("formpage")
   });
 
+  
+
   // app.get("/blog", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/blog.html"));
   // });
