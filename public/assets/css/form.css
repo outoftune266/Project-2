@@ -116,7 +116,7 @@ input::placeholder{
     color: #fff;
 }
 
-textarea{
+#name, #cuisine, #coord, #url, #rating, #try{
     padding: 10px;
     margin: 10px;
     width: 70%;
