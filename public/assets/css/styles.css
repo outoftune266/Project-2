@@ -108,12 +108,12 @@ body {
   font-size: 3rem;
 }
 
-.hide {
+.lead {
   background: black;
   overflow: hidden;
 }
 
-.hide span {
+.lead span {
   transform: translateY(100%);
   display: inline-block;
 }
