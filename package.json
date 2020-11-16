@@ -23,6 +23,7 @@
     "handlebars-form-helpers": "^0.1.4",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
+    "places.js": "^1.19.0",
     "sequelize": "^6.3.5"
   }
 }
