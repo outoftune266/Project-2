@@ -1,4 +1,4 @@
-// Creating our User model
+// Creating our User model for future development
 module.exports = function (sequelize, DataTypes) {
     let Entertainment = sequelize.define("Entertainment", {
         activityType: {

@@ -1,39 +1,4 @@
-
-//let location = document.getElementById("coord");
-// function city() {
-
-
-//     console.log(city);
-//     getLocation(city);
-// }
-// import places from "places.js"
-const places = require('places.js');
-
-var placesAutocomplete = places({
-    appId: 'SHWWQFUKYV',
-    apiKey: '84715ad095e73cb3e21048ae45bcd524',
-    container: document.querySelector('#coord')
-  });
-  placesAutocomplete();
-
-// $(document).ready(function () {
-//     (function () {
-//         var placesAutocomplete = places({
-//             appId: ‘plN7IU9KL60M’,
-//             apiKey: ‘7dbf0d051f67734266786c8810950b69’,
-//             container: document.querySelector(‘#address’),
-//             templates: {
-//                 value: function (suggestion) {
-//                     return suggestion.name;
-//                 }
-//             }
-//         }).configure({
-//             type: ‘city’,
-//             aroundLatLngViaIP: false,
-//         });
-//     })();
-// });
-
+// Grabs input values from form and uses opencagedata API to get Lat/Lng for location
 function getLocation() {
     let address = $("#coord").val();
     let name = $("#name").val();
@@ -62,12 +27,13 @@ function getLocation() {
     });
 };
 
+// Returns value of checkbox for test purposes
 function check() {
     let check = document.getElementById("family").checked;
     console.log(check);
 }
 
-
+// Event listener that calls getLocation function and clears input fields
 $(".submit").on("click", function (e) {
     e.preventDefault();
     getLocation();
@@ -76,21 +42,8 @@ $(".submit").on("click", function (e) {
 
 });
 
-
+// Sends POST request to server to add location to database
 function newLocation(name, cuisine, address, cost, url, rating, lat, lng, family, mustTry) {
-    //console.log(name);
-    // let data = {
-    // restaurantName: name,
-    // cuisine: cuisine,
-    // location: location,
-    // cost: cost,
-    // website: url,
-    // rating: rating,
-    // latitude: lat,
-    // longitude: lng,
-    // familyFriendly: family,
-    // mustTry: mustTry
-    // };
     $.ajax({
         url: "/api/food",
         method: "POST",
@@ -112,13 +65,34 @@ function newLocation(name, cuisine, address, cost, url, rating, lat, lng, family
     })
 }
 
-
+// Event listener to send user back to the main page
 $(".home").on("click", () => {
     window.location.replace("/");
 });
-// ).done(function (data) {
-//         alert("Thanks for entering a restaurant!!!!!!!")
-//         console.log(data);
-//         // If there's an error, handle it by throwing up a bootstrap alert
-//     }).catch(handleLoginErr);
-// }
+
+
+// For Furture development to autocomplete addresses
+// const places = require('places.js');
+// var placesAutocomplete = places({
+//     appId: 'SHWWQFUKYV',
+//     apiKey: '84715ad095e73cb3e21048ae45bcd524',
+//     container: document.querySelector('#coord')
+//   });
+
+// $(document).ready(function () {
+//     (function () {
+//         var placesAutocomplete = places({
+//             appId: ‘plN7IU9KL60M’,
+//             apiKey: ‘7dbf0d051f67734266786c8810950b69’,
+//             container: document.querySelector(‘#address’),
+//             templates: {
+//                 value: function (suggestion) {
+//                     return suggestion.name;
+//                 }
+//             }
+//         }).configure({
+//             type: ‘city’,
+//             aroundLatLngViaIP: false,
+//         });
+//     })();
+// });
