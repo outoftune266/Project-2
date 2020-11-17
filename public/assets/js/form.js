@@ -92,19 +92,19 @@ $(".home").on("click", () => {
 
 
 // For Furture development to autocomplete addresses
-// $(document).ready(function () {
-//     (function () {
-//         var placesAutocomplete = places({
-//             appId: 'pl27IHPE0VXJ',
-//             apiKey: '2e8037da63fcfb06b866975b7cd5b509',
-//             container: document.querySelector("#coord"),
-//             templates: {
-//                 value: function (suggestion) {
-//                     return suggestion.name;
-//                 }
-//             }
-//         }).configure({
-//             type: "address",
-//         });
-//     })();
-// });
+$(document).ready(function () {
+    (function () {
+        var placesAutocomplete = places({
+            appId: 'pl27IHPE0VXJ',
+            apiKey: '2e8037da63fcfb06b866975b7cd5b509',
+            container: document.querySelector("#coord"),
+            templates: {
+                value: function (suggestion) {
+                    return suggestion.name;
+                }
+            }
+        }).configure({
+            type: "address",
+        });
+    })();
+});
