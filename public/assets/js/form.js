@@ -61,9 +61,29 @@ function newLocation(name, cuisine, address, cost, url, rating, lat, lng, family
         },
         dataType: "json"
     }).then(() => {
-        alert("Your entry has been recorded! Enter another location or click GO BACK HOME to return to the map");
+        // alert("Your entry has been recorded! Enter another location or click GO BACK HOME to return to the map");
+        toastr.info('Your submission has been added to the database!', "Thanks!");
     })
 }
+
+// Options for toast notifications
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-left",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
 
 // Event listener to send user back to the main page
 $(".home").on("click", () => {
@@ -72,27 +92,19 @@ $(".home").on("click", () => {
 
 
 // For Furture development to autocomplete addresses
-// const places = require('places.js');
-// var placesAutocomplete = places({
-//     appId: 'SHWWQFUKYV',
-//     apiKey: '84715ad095e73cb3e21048ae45bcd524',
-//     container: document.querySelector('#coord')
-//   });
-
-// $(document).ready(function () {
-//     (function () {
-//         var placesAutocomplete = places({
-//             appId: ‘plN7IU9KL60M’,
-//             apiKey: ‘7dbf0d051f67734266786c8810950b69’,
-//             container: document.querySelector(‘#address’),
-//             templates: {
-//                 value: function (suggestion) {
-//                     return suggestion.name;
-//                 }
-//             }
-//         }).configure({
-//             type: ‘city’,
-//             aroundLatLngViaIP: false,
-//         });
-//     })();
-// });
+$(document).ready(function () {
+    (function () {
+        var placesAutocomplete = places({
+            appId: 'pl27IHPE0VXJ',
+            apiKey: '2e8037da63fcfb06b866975b7cd5b509',
+            container: document.querySelector("#coord"),
+            templates: {
+                value: function (suggestion) {
+                    return suggestion.name;
+                }
+            }
+        }).configure({
+            type: "address",
+        });
+    })();
+});
