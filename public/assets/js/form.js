@@ -13,6 +13,24 @@
 //     container: document.querySelector('#coord')
 //   });
 
+// $(document).ready(function () {
+//     (function () {
+//         var placesAutocomplete = places({
+//             appId: ‘plN7IU9KL60M’,
+//             apiKey: ‘7dbf0d051f67734266786c8810950b69’,
+//             container: document.querySelector(‘#address’),
+//             templates: {
+//                 value: function (suggestion) {
+//                     return suggestion.name;
+//                 }
+//             }
+//         }).configure({
+//             type: ‘city’,
+//             aroundLatLngViaIP: false,
+//         });
+//     })();
+// });
+
 function getLocation() {
     let address = $("#coord").val();
     let name = $("#name").val();
