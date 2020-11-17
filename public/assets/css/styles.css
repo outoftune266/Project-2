@@ -3,63 +3,7 @@ body {
     url(../images/dark.jpeg);
   background-size: cover;
   background-position: center;
-  /* height: 100%;
-  width: 100%; */
-  /* padding-bottom: 2%; */
-  /* align-content: center; */
 }
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* Map works with this css */
-
-/* #map {
-    min-height: 40vw;
-} */
-
-/* #map {
-  position: absolute;
-  top: 30%;
-  bottom: 25%;
-  left: 12.5%;
-  min-height: 60vh;
-  width: 75%;
-  justify-content: center;
-  align-items: center;
-  z-index: -1;
-} */
-
-/* Map does not work with this css */
-/* #map {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    min-height: 60vh;
-    width: 50%;
-    padding-top: 20em;
-    padding: 10rem 5rem;
-} */
-
-/* nav {
-  display: flex;
-  justify-items: center;
-  justify-content: space-between;
-  min-height: 10vh;
-} */
-
-/* .nav-links {
-  display: flex;
-  list-style: none;
-} */
-
-/* .nav-links li {
-  padding-left: 10rem;
-  font-size: 1.2rem;
-} */
 
 #logo {
   font-weight: lighter;
@@ -70,10 +14,6 @@ body {
 }
 
 .big-text {
-  /* position: absolute; */
-  /* top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%); */
   color: rgb(60, 61, 61);
   font-family: 'Caveat', cursive;
   text-align: center;
@@ -120,7 +60,6 @@ body {
 
 h2 {
   font-size: 6vw;
-  /* padding-bottom: 15%; */
 }
 
 h3 {
@@ -129,21 +68,13 @@ h3 {
 }
 
 footer {
-  /* position: sticky; */
   text-align: center;
-  /* padding-top: 42rem; */
   color:#fff;
   font-family: 'Caveat', cursive;
 
 }
 
 .toggle {
-  /* display: flex;
-  position: absolute;
-  margin-left: 30%;
-  top: 92%;
-  width: 75%;
-  left: 12.5%; */
   justify-content: center;
   align-items: center;
 }
@@ -160,8 +91,6 @@ footer {
   text-align: center;
   cursor: pointer;
   letter-spacing: 2px;
-  /* margin-left: 1.5%;
-  margin-right: 1.5%; */
   border: 2px solid rgb(190, 190, 190);
   color: rgb(190, 190, 190);
 }
@@ -171,142 +100,3 @@ footer {
     color: #fff;
     cursor: pointer;
 }
-
-/* .btn:active {
-  -ms-transform: translateY(2px);
-  -webkit-transform: translateY(2px);
-  transform: translateY(2px);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  border-bottom: none;
-} */
-
-/* formpage css */
-/* 
-.container {
-    width: 90%;
-    margin: auto;
-    overflow: hidden;
-}
-#contacts {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)url(./assets/images/map.jpeg));
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    padding-bottom: 2%;
-    align-content: center;
-}
-
-#contacts .container h2{
-    text-align: center;
-    text-decoration: underline;
-    text-underline-position: under;
-    color: rgb(238,235,235);
-    letter-spacing: 2px;
-}
-
-#contacts .container p{
-    text-align: center;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 3%;
-    color: #fff;
-    letter-spacing: 3px;
-}
-
-.food-location i.fa{
-    font-size: 22px;
-    padding: 3%;
-    background-color: none;
-    margin: 2%;
-    cursor: pointer;
-    border-radius: 80%;
-    border: 2px solid rgb(190,190,190);
-    color: rgb(190,190,190);
-}
-
-.food-location i.fa:hover{
-    cursor: pointer;
-    border: 2px solid #fff;
-    color: #fff;
-}
-
-
-.form{
-    display: grid;
-    grid-template-columns: auto auto;
-}
-
-.food-info{
-    font-size: 16px;
-    font-style: italic;
-    color: #fff;
-    letter-spacing: 2px;
-}
-
-input{
-    padding:16px;
-    margin: 10px;
-    width: 70%;
-    background-color: rgba(136,133,133,0.5 );
-    color: #fff;
-    border: none;
-    outline: none;
-}
-
-
-input::placeholder{
-    color: #fff;
-}
-
-textarea{
-    padding: 10px;
-    margin: 10px;
-    width: 70%;
-    background-color: rgba(136,133,133,0.5);
-    color: #fff;
-    border: none;
-    outline: none;
-}
-
-textarea::placeholder{
-    color: #fff;
-}
-
-.submit{
-    width: 40%;
-    background: none;
-    padding: 4px;
-    outline: none;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    height: 33px;
-    text-align: center;
-    cursor: pointer;
-    letter-spacing: 2px;
-    margin-left: 3%;
-    border: 2px solid rgb(190,190,190);
-    color: rgb(190,190,190);
-
-}
-
-.submit:hover{
-    border: 1px solid #fff;
-    color: #fff;
-    cursor: pointer;
-}
-
-@media (max-width: 770px) {
-    #contacts .form {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    #contacts .submit{
-        width: 60%;
-    }
-}
- */
