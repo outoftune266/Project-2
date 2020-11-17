@@ -1,3 +1,7 @@
+// Global Variables
+let lat;
+let lng;
+
 // Grabs input values from form and uses opencagedata API to get Lat/Lng for location
 function getLocation() {
     let address = $("#coord").val();
@@ -8,13 +12,14 @@ function getLocation() {
     let rating = $("#rating").val();
     let family = document.getElementById("family").checked;
     let mustTry = $("#try").val();
-    console.log(url);
+    // console.log(url);
     if (url) {
         url = url;
     } else {
         url = "n/a";
     }
-    console.log(url);
+    // console.log(url);
+
     let queryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + address + "&key=d0ec5acfd95d41b2b3da1850a8ae6d1a";
     $.ajax({
         url: queryURL,
@@ -25,6 +30,7 @@ function getLocation() {
         lng = response.results[0].geometry.lng;
         newLocation(name, cuisine, address, cost, url, rating, lat, lng, family, mustTry)
     });
+
 };
 
 // Returns value of checkbox for test purposes
@@ -92,19 +98,26 @@ $(".home").on("click", () => {
 
 
 // For Furture development to autocomplete addresses
-$(document).ready(function () {
-    (function () {
-        var placesAutocomplete = places({
-            appId: 'pl27IHPE0VXJ',
-            apiKey: '2e8037da63fcfb06b866975b7cd5b509',
-            container: document.querySelector("#coord"),
-            templates: {
-                value: function (suggestion) {
-                    return suggestion.name;
-                }
-            }
-        }).configure({
-            type: "address",
-        });
-    })();
-});
+// $(document).ready(function () {
+//     (function () {
+//         var placesAutocomplete = places({
+//             appId: 'pl27IHPE0VXJ',
+//             apiKey: '2e8037da63fcfb06b866975b7cd5b509',
+//             container: document.querySelector("#coord"),
+//             templates: {
+//                 value: function (suggestion) {
+//                     return suggestion.name;
+//                 }
+//             }
+//         }).configure({
+//             type: "address",
+//         });
+
+//         placesAutocomplete.on("change", function(e) {
+//             lat = e.suggestion.latlng.lat;
+//             lng = e.suggestion.latlng.lng;
+//             console.log(lat);
+//             console.log(lng);
+//         })
+//     })();
+// });
