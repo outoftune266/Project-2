@@ -75,7 +75,7 @@ body {
   left: 50%;
   transform: translate(-50%, -30%); */
   color: rgb(60, 61, 61);
-  font-family: fantasy;
+  font-family: 'Caveat', cursive;
   text-align: center;
 }
 
@@ -104,7 +104,7 @@ body {
 
 .intro-text {
   color: rgb(227, 242, 255);
-  font-family: monospace;
+  font-family: 'Caveat', cursive;
   font-size: 3rem;
 }
 
@@ -124,7 +124,7 @@ h2 {
 }
 
 h3 {
-    font-family: fantasy;
+  font-family: 'Caveat', cursive;
     font-size: 2vw;
 }
 
@@ -133,7 +133,7 @@ footer {
   text-align: center;
   /* padding-top: 42rem; */
   color:#fff;
-  font-family: fantasy;
+  font-family: 'Caveat', cursive;
 
 }
 
