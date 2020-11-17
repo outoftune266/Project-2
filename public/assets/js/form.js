@@ -6,12 +6,15 @@
 //     console.log(city);
 //     getLocation(city);
 // }
-// const places = require('places.js');
-// var placesAutocomplete = places({
-//     appId: 'SHWWQFUKYV',
-//     apiKey: '84715ad095e73cb3e21048ae45bcd524',
-//     container: document.querySelector('#coord')
-//   });
+// import places from "places.js"
+const places = require('places.js');
+
+var placesAutocomplete = places({
+    appId: 'SHWWQFUKYV',
+    apiKey: '84715ad095e73cb3e21048ae45bcd524',
+    container: document.querySelector('#coord')
+  });
+  placesAutocomplete();
 
 // $(document).ready(function () {
 //     (function () {
