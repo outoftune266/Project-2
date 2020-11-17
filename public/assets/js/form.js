@@ -92,27 +92,19 @@ $(".home").on("click", () => {
 
 
 // For Furture development to autocomplete addresses
-// const places = require('places.js');
-// var placesAutocomplete = places({
-//     appId: 'SHWWQFUKYV',
-//     apiKey: '84715ad095e73cb3e21048ae45bcd524',
-//     container: document.querySelector('#coord')
-//   });
-
 // $(document).ready(function () {
 //     (function () {
 //         var placesAutocomplete = places({
-//             appId: ‘plN7IU9KL60M’,
-//             apiKey: ‘7dbf0d051f67734266786c8810950b69’,
-//             container: document.querySelector(‘#address’),
+//             appId: 'pl27IHPE0VXJ',
+//             apiKey: '2e8037da63fcfb06b866975b7cd5b509',
+//             container: document.querySelector("#coord"),
 //             templates: {
 //                 value: function (suggestion) {
 //                     return suggestion.name;
 //                 }
 //             }
 //         }).configure({
-//             type: ‘city’,
-//             aroundLatLngViaIP: false,
+//             type: "address",
 //         });
 //     })();
 // });
