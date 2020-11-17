@@ -61,9 +61,29 @@ function newLocation(name, cuisine, address, cost, url, rating, lat, lng, family
         },
         dataType: "json"
     }).then(() => {
-        alert("Your entry has been recorded! Enter another location or click GO BACK HOME to return to the map");
+        // alert("Your entry has been recorded! Enter another location or click GO BACK HOME to return to the map");
+        toastr.info('Your submission has been added to the database!', "Thanks!");
     })
 }
+
+// Options for toast notifications
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-left",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
 
 // Event listener to send user back to the main page
 $(".home").on("click", () => {
