@@ -6,7 +6,6 @@ const slider = document.querySelector(".slider");
 const logo = document.querySelector(".logo");
 //const  = document.querySelector(".hero");
 const headline = document.querySelector(".headline");
-
 const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
 
 //Map Instantiation
@@ -19,6 +18,7 @@ var map = new mapboxgl.Map({
 
 });
 
+// Queries database to return location in map viewport and builds out object to display them
 function getRestaurants() {
     let viewport = {
         minLat: bounds._sw.lat,
@@ -81,6 +81,7 @@ function getRestaurants() {
     });
 };
 
+// Uses object created by getRestaurant funciton and displays locaiton on the map
 function displayFeatures() {
     //console.log(features);
     map.addSource('places', {
@@ -121,6 +122,7 @@ function displayFeatures() {
     });
 };
 
+// Removes locations from the map
 function removeFeatures() {
     map.removeLayer("places");
     map.removeSource("places");
@@ -139,10 +141,12 @@ function removeFeatures() {
 //     });
 // };
 
+// Grabs NE and SW corner coordiantes of map viewport
 function getCoordinates() {
     bounds = map.getBounds();
 }
 
+// Displays initial POI when map is loaded
 map.on('load', function () {
 
     getCoordinates();
@@ -160,6 +164,7 @@ map.on('load', function () {
 
 });
 
+// Removes animation layer and sets map z-index once animation is complete
 setTimeout(function () {
     $(".intro").remove();
     $(".slider").remove();
@@ -180,9 +185,7 @@ $("#addLocation").on("click", () => {
     window.location.replace("/form");
 });
 
-
-
-
+// Animation settings
 tl.to(".text", { y: "0%", duration: 1, stagger: 0.55 });
 tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
 tl.to(".intro", { y: "-100%", duration: 1 }, "-=1");
