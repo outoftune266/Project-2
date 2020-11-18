@@ -1,10 +1,9 @@
 // Global Variables
-let lat;
-let lng;
+let address;
 
 // Grabs input values from form and uses opencagedata API to get Lat/Lng for location
 function getLocation() {
-    let address = $("#coord").val();
+    // let address = $("#coord").val();
     let name = $("#name").val();
     let cuisine = $("#cuisine").val();
     let cost = $("#cost").val();
@@ -97,27 +96,25 @@ $(".home").on("click", () => {
 });
 
 
-// For Furture development to autocomplete addresses
-// $(document).ready(function () {
-//     (function () {
-//         var placesAutocomplete = places({
-//             appId: 'pl27IHPE0VXJ',
-//             apiKey: '2e8037da63fcfb06b866975b7cd5b509',
-//             container: document.querySelector("#coord"),
-//             templates: {
-//                 value: function (suggestion) {
-//                     return suggestion.name;
-//                 }
-//             }
-//         }).configure({
-//             type: "address",
-//         });
+// Initializes Algolia for address autocompletion
+$(document).ready(function () {
+    (function () {
+        var placesAutocomplete = places({
+            appId: 'pl27IHPE0VXJ',
+            apiKey: '2e8037da63fcfb06b866975b7cd5b509',
+            container: document.querySelector("#coord"),
+            templates: {
+                value: function (suggestion) {
+                    return suggestion.name;
+                }
+            }
+        }).configure({
+            type: "address",
+        });
 
-//         placesAutocomplete.on("change", function(e) {
-//             lat = e.suggestion.latlng.lat;
-//             lng = e.suggestion.latlng.lng;
-//             console.log(lat);
-//             console.log(lng);
-//         })
-//     })();
-// });
+        placesAutocomplete.on("change", function(e) {
+            address = e.suggestion.name + " " + e.suggestion.city + ", " + e.suggestion.administrative + " " + e.suggestion.postcode;
+            //console.log(address);
+        });
+    })();
+});
