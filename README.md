@@ -38,9 +38,9 @@ To find great places to eat for travelers that was found by other travelers.
 
 ## Description
 Map that show travelers favorite food locations and click the icons on the map to see more information
-about that restuarant. Has a refressh button to show more locations limit 20 per refresh and scroll on 
+about that restaurant. Has a refressh button to show more locations limit 20 per refresh and scroll on 
 the United States map to see location all acrros the states. Add food loaction button that takes you to 
-a form page the input in a new resaurant.
+a form page the input in a new restaurant.
 
 ---
 ## How To Use
