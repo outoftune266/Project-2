@@ -114,7 +114,7 @@ $(document).ready(function () {
 
         placesAutocomplete.on("change", function(e) {
             address = e.suggestion.name + " " + e.suggestion.city + ", " + e.suggestion.administrative + " " + e.suggestion.postcode;
-            //console.log(address);
+            console.log(address);
         });
     })();
 });
