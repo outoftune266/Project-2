@@ -1,17 +1,21 @@
-
-
 // Requiring our models
 const db = require("../models");
+const { Op } = require("sequelize");
 
 module.exports = function (app) {
-
-
-    i
     app.get("/api/entertainment", function (req, res) {
-        let query = {};
+        let coordinates = req.query;
+        let query = {
+            latitude: {
+                [Op.between]: [coordinates.minLat, coordinates.maxLat]
+            },
+            longitude: {
+                [Op.between]: [coordinates.minLng, coordinates.maxLng]
+            }
+        };
         db.Entertainment.findAll({
+            limit: 20,
             where: query,
-            include: [db.Author]
         }).then(function (dbPost) {
             res.json(dbPost);
         });
@@ -38,6 +42,7 @@ module.exports = function (app) {
             res.json(dbPost);
         });
     });
+    
     app.put("/api/entertainment", function (req, res) {
         db.Entertainment.update(
             req.body,

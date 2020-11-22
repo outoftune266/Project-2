@@ -1,6 +1,6 @@
 // Requiring our models
 const db = require("../models");
-const { Op } = require("sequelize")
+const { Op } = require("sequelize");
 
 module.exports = function (app) {
     app.get("/api/food", function (req, res) {
@@ -18,7 +18,7 @@ module.exports = function (app) {
             limit: 20,
             where: query,
         }).then(function (dbPost) {
-            console.log(dbPost);
+            // console.log(dbPost);
             res.json(dbPost);
         });
     });
@@ -40,6 +40,7 @@ module.exports = function (app) {
             res.json(dbPost);
         });
     });
+    
     app.put("/api/food", function (req, res) {
         db.Food.update(
             req.body,

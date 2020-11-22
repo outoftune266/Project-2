@@ -168,7 +168,7 @@ map.on('load', function () {
 // Removes animation layer and sets map z-index once animation is complete
 setTimeout(function () {
     $(".intro").remove();
-    $(".slider").remove();
+    $(".slide").remove();
     $("#map").attr("style", "z-index: 1");
 }, 4000);
 
