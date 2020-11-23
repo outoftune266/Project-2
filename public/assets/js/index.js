@@ -130,17 +130,66 @@ function removeFeatures() {
 };
 
 // Entertainment feature for future implementation
-// function getEntertainment() {
-//     let viewport = {
-//         minLat: bounds._sw.lat,
-//         maxLat: bounds._ne.lat,
-//         minLng: bounds._sw.lng,
-//         maxLng: bounds._ne.lng
-//     }
-//     $.get("/api/entertainment", viewport).then(function (data) {
-//         console.log(data)
-//     });
-// };
+// Queries database to return location in map viewport and builds out object to display them
+function getEntertainment() {
+    let viewport = {
+        minLat: bounds._sw.lat,
+        maxLat: bounds._ne.lat,
+        minLng: bounds._sw.lng,
+        maxLng: bounds._ne.lng
+    };
+    $.get("/api/entertainment", viewport).then(function (data) {
+        console.log(data)
+        for (i = 0; i < data.length; i++) {
+            let feature;
+            if (`${data[i].website}` === "n/a") {
+                feature = {
+                    'type': 'Feature',
+                    'properties': {
+                        'description':
+                            `<strong>${data[i].locationName}</strong>
+                        <p>Activity Type: ${data[i].activityType}<br>
+                        Location: ${data[i].location}<br>
+                        Cost: ${data[i].cost}<br>
+                        Rating: ${data[i].rating}<br>
+                        Family Friendly: ${data[i].familyFriendly}<br>
+                        Website: ${data[i].website}
+                        </p>`,
+                        'icon': 'restaurant'
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [`${data[i].longitude}`, `${data[i].latitude}`]
+                    }
+                };
+            } else {
+                feature = {
+                    'type': 'Feature',
+                    'properties': {
+                        'description':
+                            `<strong>${data[i].restaurantName}</strong>
+                        <p>Activity Type: ${data[i].activityType}<br>
+                        Location: ${data[i].location}<br>
+                        Cost: ${data[i].cost}<br>
+                        Rating: ${data[i].rating}<br>
+                        Family Friendly: ${data[i].familyFriendly}<br>
+                        Website: ${data[i].website}
+                        <a href="https://${data[i].website}" target="_blank" title="Opens in a new window">Website</a>
+                        </p>`,
+                        'icon': 'restaurant'
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [`${data[i].longitude}`, `${data[i].latitude}`]
+                    }
+                };
+            };
+            features.push(feature);
+        };
+        //console.log(features);
+        displayFeatures();
+    });
+};
 
 // Grabs NE and SW corner coordiantes of map viewport
 function getCoordinates() {
@@ -186,11 +235,32 @@ $("#addLocation").on("click", () => {
     window.location.replace("/form");
 });
 
+$("#toggle").on("click", () => {
+    let check = document.getElementById("toggle").checked;
+    if (check === false) {
+        features = [];
+        getCoordinates();
+        removeFeatures();
+        getRestaurants();
+    } else {
+        features = [];
+        getCoordinates();
+        removeFeatures();
+        getEntertainment();
+    }
+});
+
+// Checks status of toggle swtich. False will be food/True will be entertainment
+function checkToggle() {
+    let check = document.getElementById("toggle").checked;
+    console.log(check);
+}
+
 // Animation settings
 tl.to(".text", { y: "0%", duration: 1, stagger: 0.55 });
 tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
 tl.to(".intro", { y: "-100%", duration: 1 }, "-=1.45");
-tl.from("#logo", { opacity: 0}, { opacity: 1, duration: 1});
+tl.from("#logo", { opacity: 0 }, { opacity: 1, duration: 1 });
 tl.fromTo("#map", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=1")
 
 tl.fromTo(".big-text", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=1")

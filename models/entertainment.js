@@ -1,6 +1,10 @@
 // Creating our User model for future development
 module.exports = function (sequelize, DataTypes) {
     let Entertainment = sequelize.define("Entertainment", {
+        locationName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         activityType: {
             type: DataTypes.STRING,
             allowNull: false
