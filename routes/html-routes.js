@@ -11,6 +11,9 @@ module.exports = function(app) {
     res.render("formpage")
   });
 
+  app.get("/ent", function(req, res) {
+    res.render("entertainment")
+  });
   
 
   // app.get("/blog", function(req, res) {
